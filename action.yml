@@ -1,0 +1,20 @@
+name: 'java-gradle-support'
+description: 'Java Version supported by Gradle Wrapper inside a project'
+
+inputs:
+  directory:
+    description: 'Directory where the gradle-wrapper.properties file is located'
+    required: true
+    default: './gradle/wrapper/'
+
+outputs:
+  java-version:
+    description: "Latest Java Version Supported"
+    value: ${{ steps.compute-java-versions-supported.outputs.java-version }}
+
+runs:
+  using: "composite"
+  steps:
+    - id: compute-java-version-supported
+      run: python ${{ github.action_path }}/run.py ${{ inputs.directory }}
+      shell: bash
