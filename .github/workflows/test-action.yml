@@ -10,7 +10,7 @@ jobs:
           - uses: actions/checkout@v2
           - id: test-action
             name: Test the results of the execution of the action
-            uses: actions/gradle-java-support-action@v1
+            uses: actions/gradle-java-support-action
             with:
               directory: echo $GITHUB_WORKSPACE"/test/"
           - run: echo "The java version supported is:" ${{ steps.test-action.outputs.java-version }}
